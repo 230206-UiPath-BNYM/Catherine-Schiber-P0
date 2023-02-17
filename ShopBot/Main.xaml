@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="592,624.6666666666666" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="592,624.6666666666666" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
       <x:String>System.Activities</x:String>
@@ -85,11 +85,14 @@
   <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="492.6666666666667,560" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="bsClientName" />
-      <Variable x:TypeArguments="sd:DataTable" Name="bsList_dt" />
       <Variable x:TypeArguments="x:String" Name="ckClientName" />
-      <Variable x:TypeArguments="sd:DataTable" Name="ckList_dt" />
       <Variable x:TypeArguments="x:String" Name="mmClientName" />
-      <Variable x:TypeArguments="sd:DataTable" Name="mmList_dt" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="bsList" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="ckList" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="mmList" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="bsOutOfStock" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="ckOutOfStock" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="mmOutOfStock" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -127,17 +130,17 @@
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="430.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Gathering client shopping lists" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MakeClientTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="430.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="MakeClientTables.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MakeClientTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="430.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="MakeClientLists.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_bsList_dt">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="bsList_dt" />
-        </InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_ckList_dt">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="ckList_dt" />
-        </InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_mmList_dt">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="mmList_dt" />
-        </InOutArgument>
+        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_bsList">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="bsList" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="ckList">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="ckList" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="mmList">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="mmList" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
