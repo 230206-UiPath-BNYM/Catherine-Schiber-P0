@@ -4,6 +4,7 @@
     <x:Property Name="io_vendor_dt" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="io_clientList" Type="InOutArgument(scg:List(x:String))" />
     <x:Property Name="io_clientOutofStock" Type="InOutArgument(scg:List(x:String))" />
+    <x:Property Name="io_subtotal" Type="InOutArgument(x:Double)" />
   </x:Members>
   <this:VisitStore.in_storeName>
     <InArgument x:TypeArguments="x:String" />
@@ -14,7 +15,7 @@
   <sap:VirtualizedContainerService.HintSize>776.6666666666666,2249.3333333333335</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>VisitStore_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="64">
+    <scg:List x:TypeArguments="x:String" Capacity="33">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -126,33 +127,34 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="710.6666666666666,3557.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="732,4351.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="storeString" />
                       <Variable x:TypeArguments="x:String" Name="foundVal" />
                       <Variable x:TypeArguments="x:Int32" Name="foundInd" />
                       <Variable x:TypeArguments="x:Int32" Name="stock" />
                       <Variable x:TypeArguments="x:Int32" Name="newStock" />
+                      <Variable x:TypeArguments="x:Double" Name="price" />
                     </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="648.6666666666666,92" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[in_storeName + vbcrlf + storeString]" />
-                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="648.6666666666666,2547.3333333333335" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[io_clientList]">
+                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="670,92" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[in_storeName + vbcrlf + storeString]" />
+                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="670,3341.3333333333335" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[io_clientList]">
                       <ui:ForEach.Body>
                         <ActivityAction x:TypeArguments="x:String">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="x:String" Name="anItem" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="612,2418" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="633.3333333333334,3212" sap2010:WorkflowViewState.IdRef="Sequence_16">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" sap2010:Annotation.AnnotationText="Looks for item in store dt" DataTable="[io_vendor_dt]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="550,84.66666666666667" sap2010:WorkflowViewState.IdRef="LookupDataTable_3" LookupColumnName="Item" LookupValue="[anItem]" RowIndex="[foundInd]" TargetColumnName="Item">
+                            <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" sap2010:Annotation.AnnotationText="Looks for item in store dt" DataTable="[io_vendor_dt]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="571.3333333333334,84.66666666666667" sap2010:WorkflowViewState.IdRef="LookupDataTable_3" LookupColumnName="Item" LookupValue="[anItem]" RowIndex="[foundInd]" TargetColumnName="Item">
                               <ui:LookupDataTable.CellValue>
                                 <OutArgument x:TypeArguments="x:String">[foundVal]</OutArgument>
                               </ui:LookupDataTable.CellValue>
@@ -164,23 +166,23 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:LookupDataTable>
-                            <If sap2010:Annotation.AnnotationText="Run into issues assigning stock if item not found" Condition="[foundInd &gt; -1]" DisplayName="If Found" sap:VirtualizedContainerService.HintSize="550,99.33333333333333" sap2010:WorkflowViewState.IdRef="If_3">
+                            <If sap2010:Annotation.AnnotationText="Run into issues assigning stock if item not found" Condition="[foundInd &gt; -1]" DisplayName="If Found" sap:VirtualizedContainerService.HintSize="571.3333333333334,790" sap2010:WorkflowViewState.IdRef="If_3">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <If.Then>
-                                <Sequence sap:VirtualizedContainerService.HintSize="492.6666666666667,343.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                <Sequence sap:VirtualizedContainerService.HintSize="492.6666666666667,374" sap2010:WorkflowViewState.IdRef="Sequence_12">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="430.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="[&quot;Found &quot; + foundVal + &quot; at row &quot; + foundInd.ToString]" />
-                                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="430.6666666666667,100.66666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+                                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="430.6666666666667,131.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
                                     <ui:MultipleAssign.AssignOperations>
                                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
@@ -189,6 +191,14 @@
                                           </ui:AssignOperation.To>
                                           <ui:AssignOperation.Value>
                                             <InArgument x:TypeArguments="x:Int32">[CType(io_vendor_dt.Rows(foundInd).Item(1),Integer)]</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:Double">[price]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:Double">[CType(io_vendor_dt.Rows(foundInd).Item(2),Double)]</InArgument>
                                           </ui:AssignOperation.Value>
                                         </ui:AssignOperation>
                                       </scg:List>
@@ -207,12 +217,12 @@
                                 </Sequence>
                               </If.Else>
                             </If>
-                            <ui:IfElseIf sap2010:Annotation.AnnotationText="Sorts in or out of stock" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="550,2043.3333333333333" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
+                            <ui:IfElseIf sap2010:Annotation.AnnotationText="Sorts in or out of stock" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="571.3333333333334,2146.6666666666665" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
                               <ui:IfElseIf.ConditionBlocks>
                                 <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                                   <ui:IfElseIfBlock BlockType="If" Condition="[foundInd &gt; -1 and stock &gt; 0]">
                                     <ui:IfElseIfBlock.Then>
-                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,814.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,918" sap2010:WorkflowViewState.IdRef="Sequence_14">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -221,6 +231,14 @@
                                         <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="It is in stock, buying one." />
                                         <ui:UpdateRowItem ColumnIndex="{x:Null}" ColumnName="Stock" DisplayName="Update Row Item" sap:VirtualizedContainerService.HintSize="338,198" sap2010:WorkflowViewState.IdRef="UpdateRowItem_5" Row="[io_vendor_dt.Rows(foundInd)]" Value="[stock - 1]" />
                                         <uasc:RemoveFromCollection x:TypeArguments="x:String" Index="{x:Null}" Collection="[io_clientList]" DisplayName="Remove from collection" sap:VirtualizedContainerService.HintSize="338,334" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_3" Item="[anItem]" RemoveAllElements="False" Result="[io_clientList]" />
+                                        <Assign sap:VirtualizedContainerService.HintSize="338,63.333333333333336" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:Double">[io_subtotal]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:Double">[io_subtotal + price]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
                                       </Sequence>
                                     </ui:IfElseIfBlock.Then>
                                   </ui:IfElseIfBlock>
@@ -258,7 +276,7 @@
                         </ActivityAction>
                       </ui:ForEach.Body>
                     </ui:ForEach>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Checking client list" DisplayName="CheckList.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="648.6666666666666,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="CheckList.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Checking client list" DisplayName="CheckList.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="670,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="CheckList.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="in_nameString">
                           <Literal x:TypeArguments="x:String">Still to find</Literal>
@@ -273,7 +291,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:InvokeWorkflowFile>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Checking out of stock" DisplayName="CheckList.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="532.6666666666666,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CheckList.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Checking out of stock" DisplayName="CheckList.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="670,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CheckList.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="in_nameString">
                           <Literal x:TypeArguments="x:String">Out of stock</Literal>
@@ -288,7 +306,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:InvokeWorkflowFile>
-                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532.6666666666666,355.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="670,355.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_2">
                       <ui:CommentOut.Body>
                         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,275.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
                           <sap:WorkflowViewStateService.ViewState>
