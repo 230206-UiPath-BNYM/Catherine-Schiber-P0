@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="592,2532" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="592,2415.3333333333335" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
       <x:String>System.Activities</x:String>
@@ -92,7 +92,7 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="498.6666666666667,2467.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="498.6666666666667,2350.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="bsClientName" />
       <Variable x:TypeArguments="x:String" Name="ckClientName" />
@@ -100,21 +100,9 @@
       <Variable x:TypeArguments="scg:List(x:String)" Name="bsList" />
       <Variable x:TypeArguments="scg:List(x:String)" Name="ckList" />
       <Variable x:TypeArguments="scg:List(x:String)" Name="mmList" />
-      <Variable x:TypeArguments="scg:List(x:String)" Name="bsOutOfStock">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(Of String)()" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="scg:List(x:String)" Name="ckOutOfStock">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(Of String)()" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="scg:List(x:String)" Name="mmOutOfStock">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(Of String)()" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)()]" Name="bsOutOfStock" />
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)()]" Name="ckOutOfStock" />
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)()]" Name="mmOutOfStock" />
       <Variable x:TypeArguments="x:String" Name="petStoreName" />
       <Variable x:TypeArguments="x:String" Name="grocStoreName" />
       <Variable x:TypeArguments="x:String" Name="bathStoreName" />
@@ -127,6 +115,11 @@
       <Variable x:TypeArguments="sd:DataTable" Name="bsRecExpense_dt" />
       <Variable x:TypeArguments="sd:DataTable" Name="ckRecExpense_dt" />
       <Variable x:TypeArguments="sd:DataTable" Name="mmRecExpense_dt" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="storesToVisit">
+        <Variable.Default>
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(Of String)()" />
+        </Variable.Default>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -194,7 +187,8 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="Gathering client shopping lists" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="Welcome to RoSa, the ShopBot." />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="Compiling client shopping lists." />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Makes a list of each clients items" DisplayName="MakeClientTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="MakeClientLists.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_bsList">[bsList]</OutArgument>
@@ -209,23 +203,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,306" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,226" sap2010:WorkflowViewState.IdRef="Sequence_4">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CheckList.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="CheckList.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_nameString">[bsClientName]</InArgument>
-              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_checkList">[bsList]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="Collecting vendor inventories." />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Makes all 3 vendor tables" DisplayName="MakeVendorTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="MakeVendorTables.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_petVendor_dt">[petStore_dt]</OutArgument>
@@ -240,6 +218,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="Preparing Expense reports for entries" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Makes tables for the recorded values of the reports&#xA;" DisplayName="MakeExpenseTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,99.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="MakeExpenseTables.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_bsRecExpense_dt">[bsRecExpense_dt]</OutArgument>
@@ -254,6 +233,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="Preparing for shopping trip." />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - BS to Pet" sap:VirtualizedContainerService.HintSize="436.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="VisitStore.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_storeName">
@@ -274,6 +254,9 @@
         <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">
           <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="bsRecExpense_dt" />
         </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="storesToVisit" />
+        </InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -283,83 +266,42 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CheckTable.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="CheckTable.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dataTable">
-          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="bsRecExpense_dt" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_tableName">
-          <Literal x:TypeArguments="x:String">Beth's expense table</Literal>
-        </InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,336.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,306" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,256.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,226" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Vistit Grocery Store" DisplayName="VisitStore.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="VisitStore.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CheckTable.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="CheckTable.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[grocStore_dt]</InOutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[grocStoreName]</InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dataTable">[petStore_dt]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_tableName">[petStoreName]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeWorkflowFile>
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,336.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_5">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,256.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Vistit Bath Store" DisplayName="VisitStore.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="VisitStore.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[bathStore_dt]</InOutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[bathStoreName]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:InvokeWorkflowFile>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CheckTable.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="CheckTable.xaml">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="Planning where to go." />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CheckList.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="CheckList.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dataTable">[petStore_dt]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_tableName">[petStoreName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_nameString">
+          <Literal x:TypeArguments="x:String">Stores to visit</Literal>
+        </InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_checkList">
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="storesToVisit" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="Writing Expense Reports" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WriteExpenseReport.xaml  BS Report" sap:VirtualizedContainerService.HintSize="436.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="WriteExpenseReport.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_recExpense_dt">
-          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="bsRecExpense_dt" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_clientName">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="bsClientName" />
-        </InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientList">
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="bsList" />
-        </InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientOut">
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="bsOutOfStock" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="in_subtotal">
-          <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="bsSubtotal" />
-        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_recExpense_dt">[bsRecExpense_dt]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_clientName">[bsClientName]</InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientList">[bsList]</InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientOut">[bsOutOfStock]</InArgument>
+        <InArgument x:TypeArguments="x:Double" x:Key="in_subtotal">[bsSubtotal]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
