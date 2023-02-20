@@ -148,6 +148,6 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="..\ShopsToVisit.txt" sap:VirtualizedContainerService.HintSize="577.3333333333334,136.66666666666666" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[visitString]" />
+    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName=".\ShopsToVisit.txt" sap:VirtualizedContainerService.HintSize="577.3333333333334,136.66666666666666" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[visitString]" />
   </Sequence>
 </Activity>
