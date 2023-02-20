@@ -1,6 +1,6 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="592,3878.6666666666665" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="60">
+    <scg:List x:TypeArguments="x:String" Capacity="34">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -38,7 +38,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="92">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -94,63 +94,39 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="498.6666666666667,3814" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="498.66666666666674,7628.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="bsClientName" />
-      <Variable x:TypeArguments="x:String" Name="ckClientName" />
-      <Variable x:TypeArguments="x:String" Name="mmClientName" />
-      <Variable x:TypeArguments="scg:List(x:String)" Name="bsList" />
-      <Variable x:TypeArguments="scg:List(x:String)" Name="ckList" />
-      <Variable x:TypeArguments="scg:List(x:String)" Name="mmList" />
-      <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)()]" Name="bsOutOfStock" />
-      <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)()]" Name="ckOutOfStock" />
-      <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)()]" Name="mmOutOfStock" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="client1List" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="client2List" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="client3List" />
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)()]" Name="client1OutOfStock" />
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)()]" Name="client2OutOfStock" />
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)()]" Name="client3OutOfStock" />
       <Variable x:TypeArguments="x:String" Name="petStoreName" />
       <Variable x:TypeArguments="x:String" Name="grocStoreName" />
       <Variable x:TypeArguments="x:String" Name="bathStoreName" />
       <Variable x:TypeArguments="sd:DataTable" Name="petStore_dt" />
       <Variable x:TypeArguments="sd:DataTable" Name="grocStore_dt" />
       <Variable x:TypeArguments="sd:DataTable" Name="bathStore_dt" />
-      <Variable x:TypeArguments="x:Double" Name="bsSubtotal" />
-      <Variable x:TypeArguments="x:Double" Name="ckSubtotal" />
-      <Variable x:TypeArguments="x:Double" Name="mmSubtotal" />
-      <Variable x:TypeArguments="sd:DataTable" Name="bsRecExpense_dt" />
-      <Variable x:TypeArguments="sd:DataTable" Name="ckRecExpense_dt" />
-      <Variable x:TypeArguments="sd:DataTable" Name="mmRecExpense_dt" />
+      <Variable x:TypeArguments="x:Double" Name="client1Subtotal" />
+      <Variable x:TypeArguments="x:Double" Name="client2Subtotal" />
+      <Variable x:TypeArguments="x:Double" Name="client3Subtotal" />
+      <Variable x:TypeArguments="sd:DataTable" Name="client1RecExpense_dt" />
+      <Variable x:TypeArguments="sd:DataTable" Name="client2RecExpense_dt" />
+      <Variable x:TypeArguments="sd:DataTable" Name="client3RecExpense_dt" />
       <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)()]" Name="storesToVisit" />
+      <Variable x:TypeArguments="x:String" Name="client1Name" />
+      <Variable x:TypeArguments="x:String" Name="client2Name" />
+      <Variable x:TypeArguments="x:String" Name="client3Name" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Names for clients and stores" DisplayName="Assign Names" sap:VirtualizedContainerService.HintSize="436.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Names for clients and stores" DisplayName="Assign Names" sap:VirtualizedContainerService.HintSize="436.6666666666667,192.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[bsClientName]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">Beth S.</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[ckClientName]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">Chris K.</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[mmClientName]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">Mary M.</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
             <ui:AssignOperation.To>
               <OutArgument x:TypeArguments="x:String">[petStoreName]</OutArgument>
@@ -179,28 +155,55 @@
       </ui:MultipleAssign.AssignOperations>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
+    <ui:InputDialog Options="{x:Null}" DisplayName="Input First Client" sap:VirtualizedContainerService.HintSize="436.6666666666667,300.6666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Choose who to shop for first:" OptionsString="Beth S.;Chris K.;Mary M." Title="First Client">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[client1Name]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="436.6666666666667,275.3333333333333" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+      <ui:InterruptibleDoWhile.Body>
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,104.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </ui:InterruptibleDoWhile.Body>
+    </ui:InterruptibleDoWhile>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="Welcome to RoSa, the ShopBot." />
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="Compiling client shopping lists." />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Makes a list of each clients items" DisplayName="MakeClientTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="MakeClientLists.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_bsList">[bsList]</OutArgument>
-        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_ckList">[ckList]</OutArgument>
-        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_mmList">[mmList]</OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,275.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,195.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Makes a list of each clients items" DisplayName="MakeClientTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="MakeClientLists.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_bsList">[client1List]</OutArgument>
+              <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_ckList">[client2List]</OutArgument>
+              <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_mmList">[client3List]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="Collecting vendor inventories." />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Makes all 3 vendor tables" DisplayName="MakeVendorTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="MakeVendorTables.xaml">
       <ui:InvokeWorkflowFile.Arguments>
@@ -217,183 +220,293 @@
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="Preparing Expense reports for entries" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Makes tables for the recorded values of the reports&#xA;" DisplayName="MakeExpenseTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,99.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="MakeExpenseTables.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_bsRecExpense_dt">[bsRecExpense_dt]</OutArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ckRecExpense_dt">[ckRecExpense_dt]</OutArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_mmRecExpense_dt">[mmRecExpense_dt]</OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,290" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,210" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Makes tables for the recorded values of the reports&#xA;" DisplayName="MakeExpenseTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,99.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="MakeExpenseTables.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_bsRecExpense_dt">[client1RecExpense_dt]</OutArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ckRecExpense_dt">[client2RecExpense_dt]</OutArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_mmRecExpense_dt">[client3RecExpense_dt]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="Preparing for shopping trip." />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - BS to Pet" sap:VirtualizedContainerService.HintSize="436.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="VisitStore.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[petStoreName]</InArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[petStore_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[bsList]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[bsOutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[bsSubtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[bsRecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - CK to Pet" sap:VirtualizedContainerService.HintSize="436.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="VisitStore.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[petStoreName]</InArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[petStore_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[ckList]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[ckOutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[ckSubtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[ckRecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - MM to Pet" sap:VirtualizedContainerService.HintSize="436.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="VisitStore.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[petStoreName]</InArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[petStore_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[mmList]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[mmOutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[mmSubtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[mmRecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - BS to Bath" sap:VirtualizedContainerService.HintSize="436.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="VisitStore.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[bathStoreName]</InArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[bathStore_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[bsList]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[bsOutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[bsSubtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[bsRecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - CK to Bath" sap:VirtualizedContainerService.HintSize="436.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="VisitStore.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[bathStoreName]</InArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[bathStore_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[ckList]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[ckOutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[ckSubtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[ckRecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - MM to Bath" sap:VirtualizedContainerService.HintSize="436.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="VisitStore.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[bathStoreName]</InArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[bathStore_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[mmList]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[mmOutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[mmSubtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[mmRecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - BS to Grocery" sap:VirtualizedContainerService.HintSize="436.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="VisitStore.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[grocStoreName]</InArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[grocStore_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[bsList]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[bsOutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[bsSubtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[bsRecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - CK to Grocery" sap:VirtualizedContainerService.HintSize="436.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="VisitStore.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[grocStoreName]</InArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[grocStore_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[ckList]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[ckOutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[ckSubtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[ckRecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - MM to Grocery" sap:VirtualizedContainerService.HintSize="436.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="VisitStore.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[grocStoreName]</InArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[grocStore_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[mmList]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[mmOutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[mmSubtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[mmRecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,275.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,195.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - BS to Pet" sap:VirtualizedContainerService.HintSize="338,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="VisitStore.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[petStoreName]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[petStore_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[client1List]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[client1OutOfStock]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[client1Subtotal]</InOutArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[client1RecExpense_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,275.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,195.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - CK to Pet" sap:VirtualizedContainerService.HintSize="338,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="VisitStore.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[petStoreName]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[petStore_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[client2List]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[client2OutOfStock]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[client2Subtotal]</InOutArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[client2RecExpense_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,275.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,195.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - MM to Pet" sap:VirtualizedContainerService.HintSize="338,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="VisitStore.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[petStoreName]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[petStore_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[client3List]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[client3OutOfStock]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[client3Subtotal]</InOutArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[client3RecExpense_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,275.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,195.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - BS to Bath" sap:VirtualizedContainerService.HintSize="338,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="VisitStore.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[bathStoreName]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[bathStore_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[client1List]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[client1OutOfStock]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[client1Subtotal]</InOutArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[client1RecExpense_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,275.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,195.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - CK to Bath" sap:VirtualizedContainerService.HintSize="338,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="VisitStore.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[bathStoreName]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[bathStore_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[client2List]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[client2OutOfStock]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[client2Subtotal]</InOutArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[client2RecExpense_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,275.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_9">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,195.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - MM to Bath" sap:VirtualizedContainerService.HintSize="338,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="VisitStore.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[bathStoreName]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[bathStore_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[client3List]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[client3OutOfStock]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[client3Subtotal]</InOutArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[client3RecExpense_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,275.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_10">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,195.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - BS to Grocery" sap:VirtualizedContainerService.HintSize="338,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="VisitStore.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[grocStoreName]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[grocStore_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[client1List]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[client1OutOfStock]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[client1Subtotal]</InOutArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[client1RecExpense_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,275.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_11">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,195.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - CK to Grocery" sap:VirtualizedContainerService.HintSize="338,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="VisitStore.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[grocStoreName]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[grocStore_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[client2List]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[client2OutOfStock]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[client2Subtotal]</InOutArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[client2RecExpense_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,275.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_12">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,195.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1 client vists 1 store" DisplayName="VisitStore.xaml - MM to Grocery" sap:VirtualizedContainerService.HintSize="338,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="VisitStore.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[grocStoreName]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[grocStore_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientList">[client3List]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_clientOutofStock">[client3OutOfStock]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:Double" x:Key="io_subtotal">[client3Subtotal]</InOutArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_recExpense_dt">[client3RecExpense_dt]</InOutArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,306" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,226" sap2010:WorkflowViewState.IdRef="Sequence_2">
@@ -412,63 +525,118 @@
       </ui:CommentOut.Body>
     </ui:CommentOut>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="Planning where to go." />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Writes out stores to visit" DisplayName="CheckList.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="CheckList.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_nameString">
-          <Literal x:TypeArguments="x:String">Stores to visit</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_checkList">
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="storesToVisit" />
-        </InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="writes to ShopsToVisit.txt" DisplayName="ListWriteToFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="ListWriteToFile.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_writeList">
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="storesToVisit" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_nameString">
-          <Literal x:TypeArguments="x:String">Stores to Visit</Literal>
-        </InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,336.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_13">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,256.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_15">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Writes out stores to visit to console" DisplayName="CheckList.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="CheckList.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_nameString">
+                <Literal x:TypeArguments="x:String">Stores to visit</Literal>
+              </InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_checkList">
+                <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="storesToVisit" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,336.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_14">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,256.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_16">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="writes to ShopsToVisit.txt" DisplayName="ListWriteToFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="ListWriteToFile.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_writeList">
+                <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="storesToVisit" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_nameString">
+                <Literal x:TypeArguments="x:String">Stores to Visit</Literal>
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="Writing Expense Reports" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WriteExpenseReport.xaml  BS Report" sap:VirtualizedContainerService.HintSize="436.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="WriteExpenseReport.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_recExpense_dt">[bsRecExpense_dt]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_clientName">[bsClientName]</InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientList">[bsList]</InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientOut">[bsOutOfStock]</InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="in_subtotal">[bsSubtotal]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WriteExpenseReport.xaml  CK Report" sap:VirtualizedContainerService.HintSize="436.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="WriteExpenseReport.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_recExpense_dt">[ckRecExpense_dt]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_clientName">[ckClientName]</InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientList">[ckList]</InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientOut">[ckOutOfStock]</InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="in_subtotal">[ckSubtotal]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WriteExpenseReport.xaml  BS Report" sap:VirtualizedContainerService.HintSize="436.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="WriteExpenseReport.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_recExpense_dt">[mmRecExpense_dt]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_clientName">[mmClientName]</InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientList">[mmList]</InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientOut">[mmOutOfStock]</InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="in_subtotal">[mmSubtotal]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,306" sap2010:WorkflowViewState.IdRef="CommentOut_15">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,226" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WriteExpenseReport.xaml  BS Report" sap:VirtualizedContainerService.HintSize="338,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="WriteExpenseReport.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_recExpense_dt">[client1RecExpense_dt]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_clientName">[bsClientName]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientList">[client1List]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientOut">[client1OutOfStock]</InArgument>
+              <InArgument x:TypeArguments="x:Double" x:Key="in_subtotal">[client1Subtotal]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,306" sap2010:WorkflowViewState.IdRef="CommentOut_16">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,226" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WriteExpenseReport.xaml  CK Report" sap:VirtualizedContainerService.HintSize="338,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="WriteExpenseReport.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_recExpense_dt">[client2RecExpense_dt]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_clientName">[ckClientName]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientList">[client2List]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientOut">[client2OutOfStock]</InArgument>
+              <InArgument x:TypeArguments="x:Double" x:Key="in_subtotal">[client2Subtotal]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.6666666666667,306" sap2010:WorkflowViewState.IdRef="CommentOut_17">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,226" sap2010:WorkflowViewState.IdRef="Sequence_19">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WriteExpenseReport.xaml  BS Report" sap:VirtualizedContainerService.HintSize="338,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="WriteExpenseReport.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_recExpense_dt">[client3RecExpense_dt]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_clientName">[mmClientName]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientList">[client3List]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientOut">[client3OutOfStock]</InArgument>
+              <InArgument x:TypeArguments="x:Double" x:Key="in_subtotal">[client3Subtotal]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
   </Sequence>
 </Activity>
