@@ -1,4 +1,4 @@
-...Need to visit 3 store(s).
+Need to visit 3 store(s).
 Stores to visit: 
 Pet
 Bath
