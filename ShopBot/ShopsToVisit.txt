@@ -1,5 +1,6 @@
-...Need to visit 3 store(s).
+Need to visit 3 store(s).
 Stores to visit: 
 Pet
 Bath
 Grocery
+Remember to shop in order of priority for Chris K., then Beth S., and finally Mary M..

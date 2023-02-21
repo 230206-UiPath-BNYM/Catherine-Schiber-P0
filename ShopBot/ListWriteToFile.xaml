@@ -2,11 +2,14 @@
   <x:Members>
     <x:Property Name="in_writeList" Type="InArgument(scg:List(x:String))" />
     <x:Property Name="in_nameString" Type="InArgument(x:String)" />
+    <x:Property Name="in_client1Name" Type="InArgument(x:String)" />
+    <x:Property Name="in_client2Name" Type="InArgument(x:String)" />
+    <x:Property Name="in_client3Name" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>629.3333333333334,1354.6666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>629.3333333333334,1458</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>LitstWriteToFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -73,13 +76,9 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="LitstWriteToFile" sap:VirtualizedContainerService.HintSize="639.3333333333334,1290" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="LitstWriteToFile" sap:VirtualizedContainerService.HintSize="639.3333333333334,1393.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Int32" Name="listLength">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_writeList.Count" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" Default="[in_writeList.Count]" Name="listLength" />
       <Variable x:TypeArguments="x:String" Name="visitString" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -148,6 +147,14 @@
         </Sequence>
       </If.Else>
     </If>
+    <Assign sap:VirtualizedContainerService.HintSize="577.3333333333334,63.333333333333336" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[visitString]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[visitString + vbcrlf + "Remember to shop in order of priority for " + in_client1Name + ", then " + in_client2Name + ", and finally " + in_client3Name + "."]</InArgument>
+      </Assign.Value>
+    </Assign>
     <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName=".\ShopsToVisit.txt" sap:VirtualizedContainerService.HintSize="577.3333333333334,136.66666666666666" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[visitString]" />
   </Sequence>
 </Activity>
