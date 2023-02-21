@@ -92,7 +92,7 @@
         <OutArgument x:TypeArguments="x:String">[visitString]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">["Need to visit " + listLength.ToString + " store(s)." + vbcrlf + "Stores to visit: "]</InArgument>
+        <InArgument x:TypeArguments="x:String">["Need to visit " + listLength.ToString + " store(s)." + vbcrlf + "Stores to visit (in order of preference): "]</InArgument>
       </Assign.Value>
     </Assign>
     <If Condition="[listLength &gt; 0]" sap:VirtualizedContainerService.HintSize="577.3333333333334,767.3333333333334" sap2010:WorkflowViewState.IdRef="If_2">

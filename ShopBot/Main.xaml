@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="592,3689.3333333333335" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="592,6290" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
       <x:String>System.Activities</x:String>
@@ -94,7 +94,7 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="492.6666666666667,3624.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="498.6666666666667,6225.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="client1List" />
       <Variable x:TypeArguments="scg:List(x:String)" Name="client2List" />
@@ -102,12 +102,12 @@
       <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)()]" Name="client1OutOfStock" />
       <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)()]" Name="client2OutOfStock" />
       <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)()]" Name="client3OutOfStock" />
-      <Variable x:TypeArguments="x:String" Name="petStoreName" />
-      <Variable x:TypeArguments="x:String" Name="grocStoreName" />
-      <Variable x:TypeArguments="x:String" Name="bathStoreName" />
-      <Variable x:TypeArguments="sd:DataTable" Name="petStore_dt" />
-      <Variable x:TypeArguments="sd:DataTable" Name="grocStore_dt" />
-      <Variable x:TypeArguments="sd:DataTable" Name="bathStore_dt" />
+      <Variable x:TypeArguments="x:String" Name="firstStoreName" />
+      <Variable x:TypeArguments="x:String" Name="secondStoreName" />
+      <Variable x:TypeArguments="x:String" Name="thirdStoreName" />
+      <Variable x:TypeArguments="sd:DataTable" Name="firstStore_dt" />
+      <Variable x:TypeArguments="sd:DataTable" Name="secondStore_dt" />
+      <Variable x:TypeArguments="sd:DataTable" Name="thirdStore_dt" />
       <Variable x:TypeArguments="x:Double" Name="client1Subtotal" />
       <Variable x:TypeArguments="x:Double" Name="client2Subtotal" />
       <Variable x:TypeArguments="x:Double" Name="client3Subtotal" />
@@ -124,45 +124,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="430.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_11" Text="Welcome to RoSa, the ShopBot." />
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Names for clients and stores" DisplayName="Assign Names" sap:VirtualizedContainerService.HintSize="430.6666666666667,192.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
-      <ui:MultipleAssign.AssignOperations>
-        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[petStoreName]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">Pet</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[grocStoreName]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">["Grocery"]</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[bathStoreName]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">Bath</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
-        </scg:List>
-      </ui:MultipleAssign.AssignOperations>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:MultipleAssign>
-    <ui:InputDialog Options="{x:Null}" DisplayName="Input First Client" sap:VirtualizedContainerService.HintSize="430.6666666666667,54" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Choose who to shop for first:" OptionsString="Beth S.;Chris K.;Mary M." Title="First Client">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_11" Text="Welcome to RoSa, the ShopBot." />
+    <ui:InputDialog Options="{x:Null}" DisplayName="Input First Client" sap:VirtualizedContainerService.HintSize="436.6666666666667,54" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Choose who to shop for first:" OptionsString="Beth S.;Chris K.;Mary M." Title="First Client">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">[client1Name]</OutArgument>
       </ui:InputDialog.Result>
@@ -173,7 +136,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InputDialog>
-    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Choose 2nd, not match first" Condition="[client1Name.Equals(client2Name)]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="430.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Choose 2nd, not match first" Condition="[client1Name.Equals(client2Name)]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="436.6666666666667,612.6666666666666" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
       <ui:InterruptibleDoWhile.Body>
         <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,411.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
@@ -191,12 +154,12 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InterruptibleDoWhile>
-    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Choose 3rd, not match fist two." Condition="[client1Name.Equals(client3Name) Or client2Name.Equals(client3Name)]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="430.6666666666667,99.33333333333333" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Choose 3rd, not match fist two." Condition="[client1Name.Equals(client3Name) Or client2Name.Equals(client3Name)]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="436.6666666666667,99.33333333333333" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
       <ui:InterruptibleDoWhile.Body>
         <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,411.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_20">
           <sap:WorkflowViewStateService.ViewState>
@@ -219,9 +182,9 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InterruptibleDoWhile>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="430.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="[&quot;Client shopping order is &quot; + client1Name +&quot;, then &quot; + client2Name + &quot;, and finally &quot; + client3Name + &quot;.&quot;]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="430.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="Compiling client shopping lists." />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Makes a list of each clients items" DisplayName="MakeClientTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="430.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="MakeClientLists.xaml">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="[&quot;Client shopping order is &quot; + client1Name +&quot;, then &quot; + client2Name + &quot;, and finally &quot; + client3Name + &quot;.&quot;]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="Compiling client shopping lists." />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Makes a list of each clients items" DisplayName="MakeClientTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="MakeClientLists.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_client1List">[client1List]</OutArgument>
         <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_client2List">[client2List]</OutArgument>
@@ -238,23 +201,122 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="430.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="Collecting vendor inventories." />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Makes all 3 vendor tables" DisplayName="MakeVendorTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="430.6666666666667,84.66666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="MakeVendorTables.xaml">
+    <ui:InputDialog Options="{x:Null}" DisplayName="Input First Store" sap:VirtualizedContainerService.HintSize="436.6666666666667,300.6666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_4" IsPassword="False" Label="Choose first store to vist." OptionsString="Pet;Bath;Grocery" Title="First Store">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[firstStoreName]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Makes sure 2nd store not same as 1st" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="436.6666666666667,612.6666666666666" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_3">
+      <ui:InterruptibleDoWhile.Body>
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,411.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_22">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InputDialog Options="{x:Null}" DisplayName="Input Second Store" sap:VirtualizedContainerService.HintSize="338,300.6666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_5" IsPassword="False" Label="Choose second store to vist." OptionsString="Pet;Bath;Grocery" Title="Second Store">
+            <ui:InputDialog.Result>
+              <OutArgument x:TypeArguments="x:String">[secondStoreName]</OutArgument>
+            </ui:InputDialog.Result>
+          </ui:InputDialog>
+        </Sequence>
+      </ui:InterruptibleDoWhile.Body>
+      <ui:InterruptibleDoWhile.Condition>
+        <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="firstStoreName.Equals(secondStoreName)" />
+      </ui:InterruptibleDoWhile.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InterruptibleDoWhile>
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Makes sure 3rd store is different" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="436.6666666666667,612.6666666666666" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_4">
+      <ui:InterruptibleDoWhile.Body>
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,411.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_23">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InputDialog Options="{x:Null}" DisplayName="Input Second Store" sap:VirtualizedContainerService.HintSize="338,300.6666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_6" IsPassword="False" Label="Choose third store to vist." OptionsString="Pet;Bath;Grocery" Title="Third Store">
+            <ui:InputDialog.Result>
+              <OutArgument x:TypeArguments="x:String">[thirdStoreName]</OutArgument>
+            </ui:InputDialog.Result>
+          </ui:InputDialog>
+        </Sequence>
+      </ui:InterruptibleDoWhile.Body>
+      <ui:InterruptibleDoWhile.Condition>
+        <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="firstStoreName.Equals(thirdStoreName) Or secondStoreName.Equals(thirdStoreName)" />
+      </ui:InterruptibleDoWhile.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InterruptibleDoWhile>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_13" Text="[&quot;Visiting stores in the order of:&quot; + vbcrlf + firstStoreName + vbcrlf + secondStoreName + vbcrlf + thirdStoreName]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="Collecting vendor inventories." />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Makes all 3 vendor tables" DisplayName="MakeVendorTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="MakeVendorTables.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_petVendor_dt">[petStore_dt]</OutArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_grocVendor_dt">[grocStore_dt]</OutArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_bathVendor_dt">[bathStore_dt]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_firstVendor_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="firstStore_dt" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_secondVendor_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="secondStore_dt" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_thirdVendor_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="thirdStore_dt" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_firstStoreName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="firstStoreName" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_secondStoreName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="secondStoreName" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_thirdStoreName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="thirdStoreName" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="430.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="Preparing Expense reports for entries" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Makes tables for the recorded values of the reports&#xA;" DisplayName="MakeExpenseTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="430.6666666666667,160.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="MakeExpenseTables.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CheckTable.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_45" UnSafe="False" WorkflowFileName="CheckTable.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dataTable">
+          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="firstStore_dt" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_tableName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="firstStoreName" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CheckTable.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_47" UnSafe="False" WorkflowFileName="CheckTable.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dataTable">
+          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="secondStore_dt" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_tableName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="secondStoreName" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CheckTable.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_46" UnSafe="False" WorkflowFileName="CheckTable.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dataTable">
+          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="thirdStore_dt" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_tableName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="thirdStoreName" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="Preparing Expense reports for entries" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Makes tables for the recorded values of the reports&#xA;" DisplayName="MakeExpenseTables.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,160.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="MakeExpenseTables.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_client1RecExpense_dt">[client1RecExpense_dt]</OutArgument>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_client2RecExpense_dt">[client2RecExpense_dt]</OutArgument>
@@ -271,24 +333,54 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="430.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="Preparing for shopping trip." />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="All visit store now" DisplayName="VisitStore.xaml - Pet" sap:VirtualizedContainerService.HintSize="430.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_38" UnSafe="False" WorkflowFileName="VisitStore.xaml">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="Preparing for shopping trip." />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="All visit store now" DisplayName="VisitStore.xaml - First Store" sap:VirtualizedContainerService.HintSize="436.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_38" UnSafe="False" WorkflowFileName="VisitStore.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[petStoreName]</InArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[petStore_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client1List">[client1List]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client1OutofStock">[client1OutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client1Subtotal">[client1Subtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client1RecExpense_dt">[client1RecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client2List">[client2List]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client2OutofStock">[client2OutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client2Subtotal">[client2Subtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client2RecExpense_dt">[client2RecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client3List">[client3List]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client3OutofStock">[client3OutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client3Subtotal">[client3Subtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client3RecExpense_dt">[client3RecExpense_dt]</InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="firstStoreName" />
+        </InArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="storesToVisit" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="firstStore_dt" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client1List">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client1List" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client1OutofStock">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client1OutOfStock" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client1Subtotal">
+          <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="client1Subtotal" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client1RecExpense_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="client1RecExpense_dt" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client2List">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client2List" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client2OutofStock">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client2OutOfStock" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client2Subtotal">
+          <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="client2Subtotal" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client2RecExpense_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="client2RecExpense_dt" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client3List">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client3List" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client3OutofStock">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client3OutOfStock" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client3Subtotal">
+          <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="client3Subtotal" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client3RecExpense_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="client3RecExpense_dt" />
+        </InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -296,23 +388,53 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="All visit store now" DisplayName="VisitStore.xaml - Bath" sap:VirtualizedContainerService.HintSize="430.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_39" UnSafe="False" WorkflowFileName="VisitStore.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="All visit store now" DisplayName="VisitStore.xaml - Second Store" sap:VirtualizedContainerService.HintSize="436.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_39" UnSafe="False" WorkflowFileName="VisitStore.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[bathStoreName]</InArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[bathStore_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client1List">[client1List]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client1OutofStock">[client1OutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client1Subtotal">[client1Subtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client1RecExpense_dt">[client1RecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client2List">[client2List]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client2OutofStock">[client2OutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client2Subtotal">[client2Subtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client2RecExpense_dt">[client2RecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client3List">[client3List]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client3OutofStock">[client3OutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client3Subtotal">[client3Subtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client3RecExpense_dt">[client3RecExpense_dt]</InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="secondStoreName" />
+        </InArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="storesToVisit" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="secondStore_dt" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client1List">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client1List" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client1OutofStock">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client1OutOfStock" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client1Subtotal">
+          <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="client1Subtotal" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client1RecExpense_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="client1RecExpense_dt" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client2List">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client2List" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client2OutofStock">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client2OutOfStock" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client2Subtotal">
+          <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="client2Subtotal" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client2RecExpense_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="client2RecExpense_dt" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client3List">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client3List" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client3OutofStock">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client3OutOfStock" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client3Subtotal">
+          <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="client3Subtotal" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client3RecExpense_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="client3RecExpense_dt" />
+        </InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -320,23 +442,53 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="All visit store now" DisplayName="VisitStore.xaml - Grocery" sap:VirtualizedContainerService.HintSize="430.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_40" UnSafe="False" WorkflowFileName="VisitStore.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="All visit store now" DisplayName="VisitStore.xaml - Third Store" sap:VirtualizedContainerService.HintSize="436.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_40" UnSafe="False" WorkflowFileName="VisitStore.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">[grocStoreName]</InArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">[storesToVisit]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">[grocStore_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client1List">[client1List]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client1OutofStock">[client1OutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client1Subtotal">[client1Subtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client1RecExpense_dt">[client1RecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client2List">[client2List]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client2OutofStock">[client2OutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client2Subtotal">[client2Subtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client2RecExpense_dt">[client2RecExpense_dt]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client3List">[client3List]</InOutArgument>
-        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client3OutofStock">[client3OutOfStock]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client3Subtotal">[client3Subtotal]</InOutArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client3RecExpense_dt">[client3RecExpense_dt]</InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_storeName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="thirdStoreName" />
+        </InArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_storesToVisit">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="storesToVisit" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_vendor_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="thirdStore_dt" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client1List">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client1List" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client1OutofStock">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client1OutOfStock" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client1Subtotal">
+          <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="client1Subtotal" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client1RecExpense_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="client1RecExpense_dt" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client2List">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client2List" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client2OutofStock">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client2OutOfStock" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client2Subtotal">
+          <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="client2Subtotal" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client2RecExpense_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="client2RecExpense_dt" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client3List">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client3List" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_client3OutofStock">
+          <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="client3OutOfStock" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Double" x:Key="io_client3Subtotal">
+          <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="client3Subtotal" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_client3RecExpense_dt">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="client3RecExpense_dt" />
+        </InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -344,8 +496,8 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="430.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="Planning where to go." />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Writes out stores to visit to console" DisplayName="CheckList.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="430.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="CheckList.xaml">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="Planning where to go." />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Writes out stores to visit to console" DisplayName="CheckList.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="CheckList.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_nameString">Stores to visit</InArgument>
         <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_checkList">[storesToVisit]</InArgument>
@@ -356,7 +508,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="writes to ShopsToVisit.txt" DisplayName="ListWriteToFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="430.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_44" UnSafe="False" WorkflowFileName="ListWriteToFile.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="writes to ShopsToVisit.txt" DisplayName="ListWriteToFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.6666666666667,146" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_44" UnSafe="False" WorkflowFileName="ListWriteToFile.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_writeList">
           <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="storesToVisit" />
@@ -380,17 +532,27 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="430.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="Writing Expense Reports" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WriteExpenseReport.xaml  client1" sap:VirtualizedContainerService.HintSize="430.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_41" UnSafe="False" WorkflowFileName="WriteExpenseReport.xaml">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.6666666666667,92" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="Writing Expense Reports" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WriteExpenseReport.xaml  client1" sap:VirtualizedContainerService.HintSize="436.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_41" UnSafe="False" WorkflowFileName="WriteExpenseReport.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_recExpense_dt">[client1RecExpense_dt]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_clientName">[client1Name]</InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientList">[client1List]</InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientOut">[client1OutOfStock]</InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="in_subtotal">[client1Subtotal]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_recExpense_dt">
+          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="client1RecExpense_dt" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_clientName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="client1Name" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientList">
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="client1List" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_clientOut">
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="client1OutOfStock" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Double" x:Key="in_subtotal">
+          <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="client1Subtotal" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WriteExpenseReport.xaml  client2" sap:VirtualizedContainerService.HintSize="430.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_42" UnSafe="False" WorkflowFileName="WriteExpenseReport.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WriteExpenseReport.xaml  client2" sap:VirtualizedContainerService.HintSize="436.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_42" UnSafe="False" WorkflowFileName="WriteExpenseReport.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_recExpense_dt">[client2RecExpense_dt]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_clientName">[client2Name]</InArgument>
@@ -399,7 +561,7 @@
         <InArgument x:TypeArguments="x:Double" x:Key="in_subtotal">[client2Subtotal]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WriteExpenseReport.xaml  client3" sap:VirtualizedContainerService.HintSize="430.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_43" UnSafe="False" WorkflowFileName="WriteExpenseReport.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WriteExpenseReport.xaml  client3" sap:VirtualizedContainerService.HintSize="436.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_43" UnSafe="False" WorkflowFileName="WriteExpenseReport.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_recExpense_dt">[client3RecExpense_dt]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_clientName">[client3Name]</InArgument>
